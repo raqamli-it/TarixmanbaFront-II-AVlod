@@ -1,0 +1,67 @@
+:root {
+  --famiyilCursive: cursive;
+  --blackColor: rgba(0, 0, 0, 0.929);
+}
+.container {
+  .wrapper {
+    background-color: #0a1821;
+    padding: 15px;
+    .prevButtons {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 6px;
+
+      button {
+        display: flex;
+        align-items: center;
+        color: white;
+        gap: 6px;
+        font-size: 20px;
+        background-color: transparent;
+        border: none;
+        transition: all 0.3s ease-in-out;
+
+        svg {
+          background-color: transparent;
+          border: none;
+          outline: none;
+          font-size: 24px;
+        }
+      }
+
+      button:first-child {
+        cursor: pointer;
+        &:hover {
+          color: green;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+
+  .content {
+    max-width: 1400px;
+    margin: 25px auto;
+    display: grid;
+    place-items: center;
+
+    h2 {
+      font-family: var(--famiyilCursive);
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    img {
+      background-size: contain;
+      height: 450px;
+    }
+
+    p,
+    span {
+      color: white !important;
+      line-height: 32px;
+    }
+  }
+}

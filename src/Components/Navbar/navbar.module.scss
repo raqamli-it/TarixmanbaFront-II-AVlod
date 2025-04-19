@@ -1,0 +1,212 @@
+:root {
+  --fontSegoe: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  z-index: 990;
+
+  nav {
+    background-color: #0a1821;
+    ul {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      height: 60px;
+
+      justify-content: space-around;
+      transition: all 0.4s ease-in-out;
+      li {
+        list-style-type: none;
+        a {
+          text-decoration: none;
+          color: white;
+          font-family: var(--fontSegoe);
+          font-size: 20px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .menu {
+            display: flex;
+          }
+        }
+
+        .boxcontainer {
+          position: relative;
+
+          button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-family: var(--fontSegoe);
+            font-size: 20px;
+            cursor: pointer;
+
+            .openicon {
+              transform: rotate(180deg);
+              transition: all 0.3s ease-in;
+            }
+
+            .closeicon {
+              transform: rotate(0deg);
+              transition: all 0.3s ease-in;
+            }
+          }
+
+          .openBox {
+            background-color: #0a1821;
+            position: absolute;
+            top: 103.5px;
+            left: -100%;
+            opacity: 1;
+            transition: all 0.3s ease-in;
+            min-width: 300px;
+            padding: 20px;
+            z-index: 990;
+            .links {
+              display: grid;
+              grid-template-columns: 1fr;
+              grid-gap: 10px;
+              .link {
+                display: flex;
+                margin: 2px 0;
+                transition: all 0.3s ease-in;
+                align-items: center;
+                img {
+                  width: 25px !important;
+                  height: 25px !important;
+                }
+                span {
+                  font-size: 16px;
+                  letter-spacing: 1px;
+                }
+                &:hover {
+                  color: rgba(39, 52, 229, 0.642);
+                  transition: all 0.3s ease-in;
+                }
+              }
+            }
+          }
+
+          .closeBox {
+            background-color: #0a1821;
+            position: absolute;
+            top: 43.5px;
+            left: -100%;
+            opacity: 0;
+            transition: all 0.3s ease-in;
+            min-width: 300px;
+            padding: 20px;
+            .links {
+              display: grid;
+              grid-template-columns: 1fr;
+              grid-gap: 10px;
+
+              .link {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .openPanel {
+      top: 70px;
+      transition: all 0.4s ease-in-out;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .boxcontainer {
+    button {
+      font-size: 18px !important;
+      display: flex;
+      gap: 5px !important;
+      svg {
+        font-size: 16px !important;
+        margin-top: 3px !important;
+      }
+    }
+
+    .links {
+      margin-left: 35px;
+      a {
+        display: block;
+        .link {
+          span {
+            width: 100% !important;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar nav ul li a {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .navbar {
+    position: relative;
+    nav {
+      ul {
+        position: fixed;
+        display: flex;
+        z-index: 990;
+        width: 50%;
+        top: -200px;
+        height: 200px;
+        flex-direction: column;
+        background-color: #0a1821;
+        li {
+          .boxcontainer {
+            display: flex;
+            flex-direction: column;
+            .openBox {
+              width: 106%;
+              left: -6%;
+              height: 385px;
+              overflow-y: auto;
+              .links {
+                margin: 0;
+                .link {
+                  img {
+                    width: 25px !important;
+                    margin-left: 1%;
+                    height: 25px !important;
+                  }
+                  span {
+                    font-size: 18px;
+                    letter-spacing: 1px;
+                  }
+                }
+              }
+              top: 187px;
+            }
+
+            .closeBox {
+              left: -6%;
+              width: 106%;
+            }
+          }
+
+          display: block;
+          width: 100%;
+          padding-left: 5%;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+}

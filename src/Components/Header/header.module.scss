@@ -1,0 +1,139 @@
+:root {
+  --famiyilCursive: cursive;
+  --blackColor: rgba(0, 0, 0, 0.929);
+}
+.container {
+  background-color: #0a1821;
+}
+.header {
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  height: 70px;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 1.6px;
+    font-family: var(--famiyilCursive);
+  }
+
+  h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    letter-spacing: 5px;
+  }
+
+  .info-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    // margin-top: 0px;
+    transition: all 0.4s ease-in-out;
+    .search {
+      position: relative;
+      width: 100%;
+
+      input {
+        background-color: transparent;
+        border: 2px solid gray;
+        width: 100%;
+        border-radius: 8px;
+        outline: none;
+        height: 38px;
+        color: white;
+        font-size: 16px;
+        letter-spacing: 1.6px;
+        padding: 0 45px 0 12px;
+        &::placeholder {
+          color: white;
+          font-size: 16px;
+          letter-spacing: 2px;
+        }
+      }
+
+      svg {
+        font-size: 24px;
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    display: none;
+    svg {
+      font-size: 20px;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
+
+// media codi
+@media only screen and (max-width: 1200px) {
+  .header {
+    padding: 0 20px;
+
+    a {
+      font-size: 14px;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .container {
+    position: fixed;
+    width: 100%;
+    z-index: 991;
+    top: 0;
+    .header {
+      position: relative;
+
+      .info-panel {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background-color: #0a1821;
+        width: 50%;
+        min-height: 200px;
+        top: -200px;
+        padding: 15px;
+        transition: all 0.4s ease-in-out;
+        right: 0%;
+      }
+
+      .openPanel {
+        margin-top: 270px;
+        // display: block;
+        transition: all 0.4s ease-in-out;
+      }
+
+      button {
+        display: block;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .header {
+  }
+}

@@ -1,0 +1,136 @@
+:root {
+  --famiyilCursive: cursive;
+  --blackColor: rgba(0, 0, 0, 0.929);
+  --blackWhiteColor: rgba(0, 0, 0, 0.792);
+}
+
+.container {
+  padding: 20px;
+
+  .carusel-container {
+    max-width: 1400px;
+    margin: 30px auto 0;
+
+    .card__container {
+      margin-bottom: 60px;
+
+      .btns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 15px 25px;
+        h1 {
+          color: var(--blackWhiteColor);
+          font-family: var(--famiyilCursive);
+        }
+        button {
+          display: flex;
+          background-color: rgba(0, 0, 0, 0.83);
+          align-items: center;
+          gap: 12px;
+          color: white;
+          font-size: 20px;
+          padding: 8px 24px;
+          outline: none;
+          border: 2px solid white;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+      }
+
+      :global {
+        .slick-prev::before,
+        .slick-next::before {
+          display: none !important;
+          content: none !important;
+        }
+      }
+
+      .card__article {
+        padding: 0 10px;
+        box-sizing: border-box;
+        text-align: center;
+        border-radius: 30px;
+        position: relative;
+        border: none;
+        outline: none;
+        overflow-y: hidden;
+        height: 350px;
+        cursor: pointer;
+        margin-bottom: 15px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 30px;
+        }
+        &:hover {
+          .card__data {
+            bottom: 30px;
+          }
+        }
+
+        .card__data {
+          background-color: white;
+          width: 80%;
+          border-radius: 15px;
+          padding: 20px 15px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -140px;
+          margin-inline: auto;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.792);
+          transition: all 0.6s ease-in-out;
+
+          p {
+            font-size: 16px;
+            font-family: var(--famiyilCursive);
+            color: var(--blackWhiteColor);
+            letter-spacing: 1.3px;
+            font-size: 18px;
+            font-weight: 600;
+            height: 55px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-align: center;
+          }
+
+          button {
+            margin-top: 12px;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            letter-spacing: 1.3px;
+            font-family: var(--famiyilCursive);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            color: rgba(0, 128, 0, 0.799);
+          }
+        }
+      }
+
+      ul {
+        li {
+          margin: 0 5px;
+
+          button {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: transparent; // nuqtaning rangi
+            border: 3px solid white;
+
+            &::before {
+              display: none; // default oq doirani yo‘qotish
+            }
+          }
+        }
+      }
+    }
+  }
+}

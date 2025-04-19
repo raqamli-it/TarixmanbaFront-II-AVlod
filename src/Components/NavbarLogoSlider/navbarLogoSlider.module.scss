@@ -1,0 +1,21 @@
+.marquee {
+  width: 100%;
+  height: 60px;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+  background-color: white;
+
+  img {
+    height: 50px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .marquee {
+    opacity: 0;
+  }
+}

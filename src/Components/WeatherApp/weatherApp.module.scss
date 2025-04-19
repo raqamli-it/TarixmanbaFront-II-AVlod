@@ -1,0 +1,27 @@
+.weather-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.weather-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 160px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.weather-card:hover {
+  transform: scale(1.05);
+}
+
+.weather-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}

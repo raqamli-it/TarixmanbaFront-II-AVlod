@@ -1,0 +1,289 @@
+:root {
+  --famiyilCursive: cursive;
+  --blackColor: rgba(0, 0, 0, 0.929);
+}
+
+.container {
+  .innerContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: flex-start;
+    max-width: 1400px;
+    margin: 45px auto;
+    gap: 30px;
+    .description {
+      background-color: rgba(0, 0, 0, 0.719);
+      padding: 0 20px 30px;
+      min-height: 500px;
+      border-radius: 18px;
+      color: white;
+
+      h1 {
+        font-family: var(--famiyilCursive);
+        text-align: center;
+        font-weight: 500;
+        color: white;
+        margin: 35px 0;
+      }
+
+      .search {
+        position: relative;
+        width: 100%;
+        height: 52px;
+
+        input {
+          background-color: transparent;
+          border: 2px solid white;
+          width: 100%;
+          border-radius: 8px;
+          outline: none;
+          height: 52px;
+          color: white;
+          font-size: 18px;
+          letter-spacing: 1.6px;
+          padding: 0 50px 0 12px;
+          &::placeholder {
+            color: white;
+            font-size: 18px;
+            letter-spacing: 2px;
+          }
+        }
+
+        svg {
+          font-size: 28px;
+          position: absolute;
+          top: 50%;
+          right: 12px;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+      }
+
+      .acardion {
+        display: flex;
+        flex-direction: column;
+
+        .accordionItem {
+          display: flex;
+          flex-direction: column;
+
+          button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 8px 15px;
+            height: 52px;
+            font-size: 18px;
+            letter-spacing: 2.5px;
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+            font-family: "Poppins", sans-serif;
+
+            span:last-child {
+              color: white;
+              font-size: 20px;
+              cursor: pointer;
+            }
+          }
+
+          .openBox {
+            display: flex;
+          }
+          .closeBox {
+            display: none;
+          }
+
+          .accordionContent {
+            flex-direction: column;
+            margin-top: 20px;
+            padding: 0 20px;
+            border-radius: 8px;
+            background-color: rgba(58, 58, 58, 0.296);
+
+            .accordionHeader {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              height: 52px;
+
+              span {
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 1.5px;
+                color: white;
+                font-weight: 400 !important;
+                font-family: "Poppins", sans-serif;
+              }
+
+              .checkboxWrapper {
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
+
+                input[type="checkbox"] {
+                  appearance: none;
+                  -webkit-appearance: none;
+                  width: 24px;
+                  height: 24px;
+                  border: 2px solid gray;
+                  border-radius: 6px;
+                  cursor: pointer;
+                  background-color: transparent;
+                  position: relative;
+                }
+
+                .customCheckbox {
+                  position: absolute;
+                  left: 7px;
+                  top: -1px;
+                  width: 16px;
+                  height: 16px;
+                  font-size: 16px;
+                }
+
+                input[type="checkbox"]:checked + .customCheckbox::before {
+                  content: "✔";
+                  font-weight: bold;
+                  font-size: 12px;
+                  color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .wrapper {
+      display: grid;
+      flex-direction: column;
+      gap: 25px;
+
+      .card {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 15px;
+        color: white;
+
+        img {
+          width: 100%;
+          height: 280px;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.4s ease-in-out;
+
+          &:hover {
+            filter: brightness(60%);
+          }
+        }
+
+        .mediaInfoSection {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+
+          h1 {
+            font-family: var(--famiyilCursive);
+            font-weight: 400;
+            font-size: 22px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+          }
+
+          .title {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+
+            span {
+              font-size: 18px;
+            }
+          }
+
+          .icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Poppins", sans-serif;
+
+            span {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .pagination {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+
+    li {
+      list-style-type: none;
+
+      a {
+        width: 55px;
+        height: 55px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: rgba(0, 128, 0, 0.714);
+        box-shadow: 0 0 10px white;
+        border: 2px solid #0a1821;
+        transition: all 0.4s ease-in-out;
+        cursor: pointer;
+        color: white;
+        &:hover {
+          transition: all 0.4s ease-in-out;
+          background-color: rgba(255, 0, 0, 0.782);
+        }
+      }
+
+      &.active a {
+        transition: all 0.4s ease-in-out;
+        background-color: red;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    button {
+      width: 75px;
+      height: 40px;
+      margin: 0 auto;
+      background-color: #0a1821;
+      display: grid;
+      cursor: pointer;
+      place-items: center;
+      border: 2px solid white;
+      border-radius: 10px;
+
+      svg {
+        color: white;
+        display: block;
+        font-size: 24px;
+      }
+    }
+  }
+}

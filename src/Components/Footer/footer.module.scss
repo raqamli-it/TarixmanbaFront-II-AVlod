@@ -1,0 +1,82 @@
+.footer-container {
+  width: 100%;
+  background-color: #0a1821;
+  padding: 35px 0;
+}
+
+.footer {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+
+  .phone,
+  .sayt {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin: 20px 0;
+    gap: 20px;
+    transition: all 0.3s ease-in;
+    a {
+      color: white;
+      text-decoration: none;
+      font-family: "Poppins", sans-serif;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        color: green;
+        transition: all 0.3s ease-in;
+      }
+    }
+
+    &:hover {
+      color: green;
+      transition: all 0.3s ease-in;
+    }
+  }
+
+  .footerPage {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 20px;
+    a {
+      text-decoration: none;
+      color: white;
+      font-family: "Poppins", sans-serif;
+      font-size: 18px;
+      transition: all 0.3s ease-in;
+      &:hover {
+        color: green;
+        transition: all 0.3s ease-in;
+      }
+    }
+  }
+
+  .contacts {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+    p {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border: 2px solid white;
+      transition: all 0.3s ease-in-out;
+      border-radius: 50%;
+      cursor: pointer;
+      a {
+        color: white;
+      }
+      &:hover {
+        background: green;
+        transition: 0.3s ease-in;
+        border: 2px solid green;
+      }
+    }
+  }
+}

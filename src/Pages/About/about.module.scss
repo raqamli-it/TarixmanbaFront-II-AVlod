@@ -1,0 +1,63 @@
+:root {
+  --famiyilCursive: cursive;
+}
+.container {
+  background-color: transparent;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .location {
+    margin: 30px auto 50px;
+    width: 60%;
+    background-color: rgba(3, 3, 3, 0.919);
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    font-family: var(--famiyilCursive);
+    text-align: center;
+    color: white;
+    h1 {
+      margin: 25px 0 0px;
+    }
+
+    p {
+      line-height: 36px;
+      text-align: left;
+      margin-left: 30px;
+      a {
+        color: rgb(13, 57, 218);
+      }
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin: 20px 0;
+    .card {
+      border: 2px solid transparent;
+      box-shadow: 0 0 8px black;
+      border-radius: 12px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 300px;
+        display: block;
+      }
+    }
+
+    .description {
+      padding: 15px;
+      height: 100%;
+      background-color: aliceblue;
+      h2,
+      h3 {
+        text-align: center;
+        color: rgba(0, 0, 0, 0.941);
+        font-family: var(--famiyilCursive);
+        line-height: 34px;
+      }
+    }
+  }
+}
