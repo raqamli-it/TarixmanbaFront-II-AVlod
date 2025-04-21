@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { SiHomeadvisor } from "react-icons/si";
 import { GrFormNext } from "react-icons/gr";
+import library from "./library.png";
 
 function Library() {
   const [data, setData] = useState([]);
@@ -47,7 +48,10 @@ function Library() {
         <div className={style.cards}>
           {data?.map((value, idx) => (
             <div key={idx} className={style.card}>
-              <img src={value.image} alt={value.title} />
+              <img
+                src={value.image ? value.image : library}
+                alt={value.title}
+              />
               <div className={style.box}>
                 <h2>{value.title}</h2>
                 <button onClick={() => navigate(`/library/${value.id}`)}>

@@ -8,38 +8,46 @@ import { BiImages } from "react-icons/bi";
 import { LiaGlobeAmericasSolid } from "react-icons/lia";
 import { LuRotate3D } from "react-icons/lu";
 import { AiOutlineEye } from "react-icons/ai";
-import ReactPaginate from "react-paginate";
-import { TbPlayerTrackNextFilled } from "react-icons/tb";
-import { TbPlayerTrackPrevFilled } from "react-icons/tb";
+import {
+  TbPlayerTrackNextFilled,
+  TbPlayerTrackPrevFilled,
+} from "react-icons/tb";
 import Loading from "../../Loading/Loading";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { ValueContext } from "../../App";
+import ReactPaginate from "react-paginate";
 
 function HomeImageDetail() {
   const [loading, setLoading] = useState(true);
-  const { id } = useParams();
   const [data, setData] = useState([]);
   const [pageCount, setPageCount] = useState(0);
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
   const [openBox, setOpenBox] = useState(null);
   const [openBoxChog, setOpenBoxChog] = useState(false);
   const [checkedItems, setCheckedItems] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { searchValue } = useContext(ValueContext);
 
   const currentPage = Number(searchParams.get("page")) || 1;
+
   const handleSelect = (id) => {
     setCheckedItems((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
 
-  const getData = async (Page = 1) => {
+  const getData = async (
+    Page = 1,
+    filters = checkedItems,
+    search = searchText
+  ) => {
     try {
-      const query = checkedItems.map((id) => `filters=${id}`).join("&");
+      const query = filters.map((id) => `filters=${id}`).join("&");
       const respons = await axios.get(
-        `category-resource/${id}/?${query}&search=${searchText}&page=${Page}`
+        `category-resource/${id}/?${query}&search=${search}&page=${Page}`
       );
 
       setPageCount(Math.ceil(respons?.data?.resources?.count / 20));
@@ -60,29 +68,26 @@ function HomeImageDetail() {
     getData(selectedPage);
   };
 
-  useEffect(() => {
-    getData(currentPage);
-  }, [id, currentPage, checkedItems]);
-
-  const result = data.data?.filter_categories.map((category) => {
-    return {
-      ...category,
-      filters: data.data?.filters.filter(
-        (filter) => Number(filter.filter_category) === Number(category.id)
-      ),
-    };
-  });
+  const onSearchClick = () => {
+    getData(currentPage, checkedItems, searchText);
+  };
 
   const ToggleBtn = (id) => {
     setOpenBox((prevId) => (prevId === id ? null : id));
   };
 
-  const onSearchClick = () => {
-    // if (searchText.trim() !== "") {
-    getData();
-    setSearchText("");
-    // }
-  };
+  useEffect(() => {
+    getData(currentPage);
+  }, [id, currentPage, checkedItems, searchText]);
+
+  const result = data.data?.filter_categories.map((category) => ({
+    ...category,
+    filters: data.data?.filters.filter(
+      (filter) => Number(filter.filter_category) === Number(category.id)
+    ),
+  }));
+
+  console.log(data.data, "data.data?.period_filters");
 
   return (
     <div className={style.container}>
@@ -98,11 +103,7 @@ function HomeImageDetail() {
                 placeholder="Qidirish..."
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    onSearchClick();
-                  }
-                }}
+                onKeyDown={(e) => e.key === "Enter" && onSearchClick()}
               />
               <FcSearch onClick={onSearchClick} />
             </div>
@@ -111,11 +112,10 @@ function HomeImageDetail() {
               <div className={style.accordionItem}>
                 <button>
                   <span>Chog'lar</span>
-
                   <span
                     onClick={() => setOpenBoxChog(!openBoxChog)}
                     style={{
-                      transform: openBoxChog && "rotate(180deg)",
+                      transform: openBoxChog ? "rotate(180deg)" : "rotate(0)",
                       transition: "transform 0.3s ease",
                       display: "inline-block",
                     }}
@@ -133,7 +133,7 @@ function HomeImageDetail() {
                     >
                       <div className={style.accordionHeader}>
                         <span>{val?.title}</span>
-                        {/* {console.log(val, "val")} */}
+
                         <label className={style.checkboxWrapper}>
                           <input
                             type="checkbox"
@@ -156,7 +156,9 @@ function HomeImageDetail() {
                       <span
                         style={{
                           transform:
-                            openBox == filterCategory.id && "rotate(180deg)",
+                            openBox === filterCategory.id
+                              ? "rotate(180deg)"
+                              : "rotate(0)",
                           transition: "transform 0.3s ease",
                           display: "inline-block",
                         }}
@@ -175,10 +177,6 @@ function HomeImageDetail() {
                       {filterCategory.filters.map((filterItem, subIdx) => (
                         <div key={subIdx} className={style.accordionHeader}>
                           <span>{filterItem.title}</span>
-                          {/* {console.log(
-                            filterItem,
-                            "filterItemlllllllllllllllllll"
-                          )} */}
                           <label className={style.checkboxWrapper}>
                             <input
                               type="checkbox"
@@ -205,7 +203,6 @@ function HomeImageDetail() {
                     src={value.image}
                     alt={value.title}
                   />
-                  {console.log(value, "Islamov Kamoliddin")}
                 </div>
 
                 <div className={style.mediaInfoSection}>
@@ -217,37 +214,31 @@ function HomeImageDetail() {
 
                   <div className={style.icons}>
                     <span>Eshtuv</span>
-
                     <span style={{ cursor: value?.audios && "not-allowed" }}>
                       <BsMic style={{ marginTop: "3px" }} />
                     </span>
 
                     <span>Surat</span>
-
                     <span style={{ cursor: value?.galleries && "not-allowed" }}>
                       <BiImages style={{ marginTop: "3px" }} />
                     </span>
 
                     <span>Matn</span>
-
                     <span style={{ cursor: value?.audios && "not-allowed" }}>
                       <BsFillChatTextFill style={{ marginTop: "3px" }} />
                     </span>
 
                     <span>Xarita</span>
-
                     <span style={{ cursor: value?.locations && "not-allowed" }}>
                       <LiaGlobeAmericasSolid style={{ marginTop: "3px" }} />
                     </span>
 
                     <span>3D</span>
-
                     <span style={{ cursor: value?.audios && "not-allowed" }}>
                       <LuRotate3D style={{ marginTop: "3px" }} />
                     </span>
 
                     <span>Ko'ruv</span>
-
                     <span style={{ cursor: value?.videos && "not-allowed" }}>
                       <AiOutlineEye
                         style={{ fontSize: "22px", marginTop: "3px" }}
@@ -279,7 +270,6 @@ function HomeImageDetail() {
           onPageChange={handlePageClick}
           containerClassName={style.pagination}
           activeClassName={style.active}
-          forcePage={currentPage - 1}
         />
       )}
     </div>
@@ -287,3 +277,5 @@ function HomeImageDetail() {
 }
 
 export default HomeImageDetail;
+
+// Salom Kamoliddin

@@ -29,7 +29,6 @@ function Search() {
   const getData = async (Page = 1) => {
     const respons = await axios.get(`search/?page=${Page}&q=${searchValue}`);
     if (respons.statusText) {
-      console.log(respons, "aaaaaaaa");
       setData(respons?.data?.results);
       setLoading(false);
     }

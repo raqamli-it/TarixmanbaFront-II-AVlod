@@ -21,7 +21,7 @@ function NavbarLogoSlider() {
 
   return (
     <div className={style.marquee}>
-      {[...Array(3)]
+      {[...Array(8)]
         .flatMap(() => img)
         .map((item, index) => (
           <img key={index} src={item.img} alt={`img-${index}`} />

@@ -27,7 +27,7 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
 
   return (
-    <ValueContext value={{ searchValue, setSearchValue }}>
+    <ValueContext.Provider value={{ searchValue, setSearchValue }}>
       <div>
         <ScrollToTop />
         <Routes>
@@ -53,7 +53,7 @@ function App() {
           </Route>
         </Routes>
       </div>
-    </ValueContext>
+    </ValueContext.Provider>
   );
 }
 

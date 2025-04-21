@@ -15,9 +15,9 @@ const Header = ({ openIcon, setOpenIcon }) => {
   // const [search, setSearch] = useState("");
 
   // const onSearch = () => {
-  //   console.log(search, "search");
-  //   // getData();
-  //   setSearch("");
+  //   console.log(searchValue, "search");
+  //   getData();
+  //   setSearchValue("");
   // };
 
   // console.log(searchValue, "contextValue ");
@@ -43,11 +43,11 @@ const Header = ({ openIcon, setOpenIcon }) => {
               placeholder="Qidirish..."
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              // onKeyDown={(e) => {
-              //   if (e.key === "Enter") {
-              //     onSearch();
-              //   }
-              // }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  // onSearch();
+                }
+              }}
             />
             <FcSearch onClick={() => navigate("/search")} />
           </div>
